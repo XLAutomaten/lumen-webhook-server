@@ -116,7 +116,9 @@ class CallWebhookJob implements ShouldQueue
             $this->attempts(),
             $this->response,
             $this->errorType,
-            $this->errorMessage
+            $this->errorMessage,
+            $this->meta['uuid'] ?? (string) Str::uuid(), // Generate a UUID if not provided
+            null // Pass null for transferStats if not available
         ));
     }
 
